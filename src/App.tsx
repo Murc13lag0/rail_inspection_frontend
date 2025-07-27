@@ -28,6 +28,16 @@ export default function App() {
     if (f) {
       const url = URL.createObjectURL(f);
       setPreview(url);
+      if (canvasRef) {
+        const img = new Image();
+        img.src = url;
+        img.onload = () => {
+          const ctx = canvasRef!.getContext("2d")!;
+          canvasRef!.width = img.width;
+          canvasRef!.height = img.height;
+          ctx.drawImage(img, 0, 0);
+        };
+      }
     }
   };
 
