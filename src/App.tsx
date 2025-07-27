@@ -13,7 +13,7 @@ export default function App() {
     setError("");
     const form = new FormData();
     form.append("file", file()!);
-    const res = await fetch("http://localhost:8000/inference", {
+    const res = await fetch("https://railinspectionbackend-production.up.railway.app/inference", {
       method: "POST",
       body: form,
     });
