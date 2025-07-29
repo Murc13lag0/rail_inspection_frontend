@@ -9,16 +9,27 @@ export default function App() {
   let canvasRef: HTMLCanvasElement | undefined;
   const CLASS_NAMES = ["Defective", "Non‑Defective"];
   const upload = async () => {
-    if (!file()) return setError("No file selected");
+    if (!file()) {
+      return setError("No file selected");
+    }
+
     setError("");
     const form = new FormData();
     form.append("file", file()!);
-    const res = await fetch("https://railinspectionbackend-production.up.railway.app/inference", {
+
+    const res = await fetch("https://railinspectionbackend-production.up.railway.app/", {
       method: "POST",
       body: form,
     });
-    if (!res.ok) return setError("Failed to process");
+
+    if (!res.ok) {
+      return setError("Failed to process");
+    }
+
     const data = await res.json();
+    if (!data?.detections) {
+      return setError("No detections found");
+    }
     setResult(data);
     drawBoxes(data.detections);
   };
