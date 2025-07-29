@@ -17,7 +17,7 @@ export default function App() {
     const form = new FormData();
     form.append("file", file()!);
 
-    const res = await fetch("https://railinspectionbackend-production.up.railway.app/", {
+    const res = await fetch("https://railinspectionbackendrust-production.up.railway.app/", {
       method: "POST",
       body: form,
     });
@@ -88,7 +88,7 @@ export default function App() {
         />
         <button class="button" onClick={upload}>Analyze</button>
       </div>
-      {error() && <p class="error">{error()}</p>}
+      <p class="error">{error()}</p>
       <div class="canvas-box">
         {preview() && <canvas ref={canvasRef!} />}
       </div>
