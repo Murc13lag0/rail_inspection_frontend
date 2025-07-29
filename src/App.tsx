@@ -17,7 +17,7 @@ export default function App() {
     const form = new FormData();
     form.append("file", file()!);
 
-    const res = await fetch("https://railinspectionbackendrust-production.up.railway.app/", {
+    const res = await fetch("https://railinspectionbackend-production.up.railway.app/", {
       method: "POST",
       body: form,
     });
