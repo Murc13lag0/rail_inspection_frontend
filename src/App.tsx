@@ -27,7 +27,7 @@ export default function App() {
     }
 
     const data = await res.json();
-    if (!data?.detections) {
+    if (!data?.detections || data.detections.length === 0) {
       return setError("No detections found");
     }
     setResult(data);
